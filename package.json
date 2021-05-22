@@ -1,0 +1,18 @@
+{
+  "name": "terrabot",
+  "version": "1.1.0",
+  "description": "A bot in development",
+  "main": "index.js",
+  "scripts": {
+    "compile-typescript": "tsc"
+  },
+  "author": "RaphGamingz",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node-json-db": "0.0.1",
+    "discord.js": "^11.4.2",
+    "node-json-db": "^0.11.0",
+    "node-ts": "^5.0.0",
+    "typescript": "^3.7.3"
+  }
+}
