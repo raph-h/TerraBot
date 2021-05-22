@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.config = {
-    "token": "NTUzODI5MDM2NzMyNzEwOTE2.D2kQPg.Ksrf1rgYiYyZDm4I_3BiH6zDRSo",
+    "token": "",
     "prefix": "!",
     "game": true,
     "commands": [
