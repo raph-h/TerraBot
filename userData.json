@@ -1,0 +1,676 @@
+{
+    "users": {
+        "445787036197060610": {
+            "money": 1291,
+            "location": "Weaponry",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {
+                "Wood Plank": 3,
+                "Metal Ore": 1,
+                "Stone Brick": 2,
+                "Stone Spear": 1,
+                "Metal Pickaxe": 1
+            },
+            "stocks": 0
+        },
+        "490161897262284811": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {
+                "Wood Log": 2,
+                "Stone Brick": 1
+            }
+        },
+        "352393305574735873": {
+            "money": 100,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 0,
+            "equipped": {},
+            "items": {
+                "Wood Plank": 1,
+                "Rock": 1,
+                "Wood Log": 1,
+                "Stone Brick": 1
+            }
+        },
+        "583979581397139466": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "445122619784691712": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "445815285056929803": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "432736341969600523": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "844849174569549835": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "678590619152547841": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "292241142420996096": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "681411189691252736": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "451607319789436929": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "720946312329166868": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "548807749350457347": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "293616492661178370": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "454949028547788801": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "545138778528940033": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "665169319566508050": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "523457687216979978": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "554564304158851092": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "676290210467807242": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "595534076996223007": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "681469530748616755": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "677791280658645003": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "606030387885506571": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "692705378638757908": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "648121069571407892": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "478187837771087873": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "371486328355029022": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "355319999130501120": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "450105066494623754": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "448780870417907712": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "432832238208417792": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "445815166249074690": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "747796167957414009": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "411446036637286413": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "742671248957636740": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "433438174337957889": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "837633886103404555": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "425828689633345547": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "574574752484818945": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "607451777100414987": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "631499217281744896": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "646281048107384852": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "445488621139787776": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "793040791302963200": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "487220744149794816": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "425590725691047946": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "376326346495754250": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "421570753503428609": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "743427387777351684": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "827539613723131935": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "679266631750516736": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "442973397589426178": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "565083622994870282": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "583593067739611147": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "371515015330660362": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "327653673868066816": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "620937684810072064": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "415507320072830977": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "686117752955469881": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "390802777225297923": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "694826408974876704": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "421610171454717962": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "751815796589723705": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "348327723879628811": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "306699824412229632": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "592992169816621057": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "441432845190430740": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "449070600800174080": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "536879725553909775": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "588681632404471808": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "485907476156514305": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        }
+    }
+}
