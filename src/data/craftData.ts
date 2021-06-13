@@ -1,0 +1,86 @@
+export let craftData = [
+    {
+        "item": "Wood Plank",
+        "amount": 1,
+        "materials": {"Wood Log": 1},
+        "catalysts": [""],
+        "craftLocation": "Camp",
+        "cooldown": 20,
+    },
+    {
+        "item": "Stone Brick",
+        "amount": 1,
+        "materials": {"Rock": 1},
+        "catalysts": ["Wood Plank"],
+        "craftLocation": "Camp",
+        "cooldown": 30,
+    },
+    {
+        "item": "Metal Bar",
+        "amount": 1,
+        "materials": {"Metal Ore": 2},
+        "catalysts": [""],
+        "craftLocation": "Forge",
+        "cooldown": 90,
+    },
+    {
+        "item": "Rare Metal Bar",
+        "amount": 1,
+        "materials": {"Rare Metal Ore": 2},
+        "catalysts": [""],
+        "craftLocation": "Forge",
+        "cooldown": 120,
+    },
+
+    // TOOLS   
+    {
+        "item": "Stone Spear",
+        "amount": 1,
+        "materials": {"Wood Log": 1, "Rock": 1},
+        "catalysts": [""],
+        "craftLocation": "Camp",
+        "cooldown": 25,
+    },
+    {
+        "item": "Wooden Sword",
+        "amount": 1,
+        "materials": {"Wood Plank": 2},
+        "catalysts": [""],
+        "craftLocation": "Weaponry",
+        "cooldown": 60,
+    },
+    {
+        "item": "Wooden Fishing Rod",
+        "amount": 1,
+        "materials": {"Wood Plank": 2, "Metal Bar": 2},
+        "catalysts": ["Rare Metal Bar"],
+        "craftLocation": "River",
+        "cooldown": 200,
+    },
+    {
+        "item": "Metal Pickaxe",
+        "amount": 1,
+        "materials": {"Metal Bar": 2},
+        "catalysts": [""],
+        "craftLocation": "Weaponry",
+        "cooldown": 150,
+    },
+
+    // Food
+    {
+        "item": "Bread",
+        "amount": 1,
+        "materials": {"Flour": 2},
+        "catalysts": [""],
+        "craftLocation": "Camp",
+        "cooldown": 50,
+    },
+    {
+        "item": "Apple Pie",
+        "amount": 1,
+        "materials": {"Flour": 2, "Apple": 3},
+        "catalysts": [""],
+        "craftLocation": "Camp",
+        "cooldown": 50,
+    },
+];
