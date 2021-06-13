@@ -1,71 +1,178 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.itemData = {
-    "items": [
+exports.itemData = void 0;
+exports.itemData = [
+    [
         {
-            "name": "TerraBot",
-            "description": "The bot that runs this",
-            "price": 1000000
+            "name": "Wood Log",
+            "description": "Cellulose from a tree",
+            "buy": -1,
+            "sell": 2,
+            "chance": 30,
+            "weight": 2,
+            "special": false
         },
+        {
+            "name": "Rock",
+            "description": "Mostly made from oxygen and silicon",
+            "buy": -1,
+            "sell": 5,
+            "chance": 25,
+            "weight": 5,
+            "special": false
+        },
+        {
+            "name": "Metal Ore",
+            "description": "A semi conductive material",
+            "buy": -1,
+            "sell": 10,
+            "chance": 10,
+            "weight": 7,
+            "special": false
+        },
+        {
+            "name": "Rare Metal Ore",
+            "description": "A special bar of metal",
+            "buy": -1,
+            "sell": 40,
+            "chance": 1,
+            "weight": 10,
+            "special": false
+        },
+        {
+            "name": "Wood Plank",
+            "description": "Cellulose from a tree",
+            "buy": 15,
+            "sell": 12,
+            "chance": 20,
+            "weight": 2,
+            "special": false
+        },
+        {
+            "name": "Stone Brick",
+            "description": "Mostly made from oxygen and silicon",
+            "buy": 20,
+            "sell": 15,
+            "chance": 20,
+            "weight": 5,
+            "special": false
+        },
+    ],
+    [
+        {
+            "name": "Wooden Sword",
+            "description": "A sharp thing",
+            "buy": 20,
+            "sell": 15,
+            "chance": 0,
+            "weight": 4,
+            "special": true,
+        },
+        {
+            "name": "Metal Pickaxe",
+            "description": "The metal is too heavy to be made into a sword",
+            "buy": 60,
+            "sell": 40,
+            "chance": 0,
+            "weight": 8,
+            "special": true,
+        },
+    ],
+    [
+        {
+            "name": "Wires",
+            "description": "Thin metal",
+            "buy": 50,
+            "sell": 40,
+            "chance": 0,
+            "weight": 1,
+            "special": false
+        },
+        {
+            "name": "Electronics",
+            "description": "A special bar of metal",
+            "buy": 100,
+            "sell": 90,
+            "chance": 0,
+            "weight": 3,
+            "special": false
+        },
+        {
+            "name": "Metal Bar",
+            "description": "A conductive material",
+            "buy": 50,
+            "sell": 35,
+            "chance": 0,
+            "weight": 6,
+            "special": false
+        },
+        {
+            "name": "Rare Metal Bar",
+            "description": "A special bar of metal",
+            "buy": 100,
+            "sell": 90,
+            "chance": 0,
+            "weight": 10,
+            "special": false
+        },
+    ],
+    [
+        {
+            "name": "Apple",
+            "description": "A basic fruit",
+            "buy": 1,
+            "sell": 0,
+            "chance": 0,
+            "weight": 1,
+            "special": true,
+        },
+        {
+            "name": "Bread",
+            "description": "BREAD",
+            "buy": 3,
+            "sell": 1,
+            "chance": 0,
+            "weight": 1,
+            "special": true
+        },
+    ],
+    [
         {
             "name": "Book",
-            "description": "For reading",
-            "price": 5
+            "description": "Knowledge is power",
+            "buy": 5,
+            "sell": 2,
+            "chance": 0,
+            "weight": 2,
+            "special": true
         },
         {
-            "name": "Computer Parts",
-            "description": "Parts of a computer",
-            "price": 750
+            "name": "Laptop",
+            "description": "The ultimate book",
+            "buy": 2000,
+            "sell": 1000,
+            "chance": 0,
+            "weight": 2,
+            "special": true
         },
         {
-            "name": "Wire",
-            "description": "Strong stuff",
-            "price": 5
+            "name": "PC",
+            "description": "Personal Computer",
+            "buy": 3000,
+            "sell": 2000,
+            "chance": 0,
+            "weight": 12,
+            "special": true
         },
         {
-            "name": "Metal Rod",
-            "description": "Strong stuff",
-            "price": 10
-        },
-        {
-            "name": "Computer",
-            "description": "A computer",
-            "price": 1000
-        },
-        {
-            "name": "Program",
-            "description": "A terrible program",
-            "price": 1
-        },
-        {
-            "name": "Fishing Rod",
-            "description": "Strong stuff",
-            "price": 15
-        },
-        {
-            "name": "Fish",
-            "description": "Food mmm",
-            "price": 2
-        },
-    ]
-};
-exports.craftingData = {
-    "recipes": [
-        {
-            "Item": "Computer",
-            "Materials": ["Book", "Computer Parts"],
-            "UsesItem": true
-        },
-        {
-            "Item": "Program",
-            "Materials": ["Computer", "Book"],
-            "UsesItem": false
-        },
-        {
-            "Item": "Fishing Rod",
-            "Materials": ["Wire", "Metal Rod"],
-            "UsesItem": true
+            "name": "TerraBot",
+            "description": "A discord bot",
+            "buy": -1,
+            "sell": 0,
+            "chance": 0,
+            "weight": 0,
+            "special": true
         }
     ]
-};
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaXRlbURhdGEuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi9zcmMvaXRlbURhdGEudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBVyxRQUFBLFFBQVEsR0FBRztJQUNsQixPQUFPLEVBQUU7UUFDTDtZQUNJLE1BQU0sRUFBRSxVQUFVO1lBQ2xCLGFBQWEsRUFBRSx3QkFBd0I7WUFDdkMsT0FBTyxFQUFFLE9BQU87U0FDbkI7UUFDRDtZQUNJLE1BQU0sRUFBRSxNQUFNO1lBQ2QsYUFBYSxFQUFFLGFBQWE7WUFDNUIsT0FBTyxFQUFFLENBQUM7U0FDYjtRQUNEO1lBQ0ksTUFBTSxFQUFFLGdCQUFnQjtZQUN4QixhQUFhLEVBQUUscUJBQXFCO1lBQ3BDLE9BQU8sRUFBRSxHQUFHO1NBQ2Y7UUFDRDtZQUNJLE1BQU0sRUFBRSxNQUFNO1lBQ2QsYUFBYSxFQUFFLGNBQWM7WUFDN0IsT0FBTyxFQUFFLENBQUM7U0FDYjtRQUNEO1lBQ0ksTUFBTSxFQUFFLFdBQVc7WUFDbkIsYUFBYSxFQUFFLGNBQWM7WUFDN0IsT0FBTyxFQUFFLEVBQUU7U0FDZDtRQUNEO1lBQ0ksTUFBTSxFQUFFLFVBQVU7WUFDbEIsYUFBYSxFQUFFLFlBQVk7WUFDM0IsT0FBTyxFQUFFLElBQUk7U0FDaEI7UUFDRDtZQUNJLE1BQU0sRUFBRSxTQUFTO1lBQ2pCLGFBQWEsRUFBRSxvQkFBb0I7WUFDbkMsT0FBTyxFQUFFLENBQUM7U0FDYjtRQUNEO1lBQ0ksTUFBTSxFQUFFLGFBQWE7WUFDckIsYUFBYSxFQUFFLGNBQWM7WUFDN0IsT0FBTyxFQUFFLEVBQUU7U0FDZDtRQUNEO1lBQ0ksTUFBTSxFQUFFLE1BQU07WUFDZCxhQUFhLEVBQUUsVUFBVTtZQUN6QixPQUFPLEVBQUUsQ0FBQztTQUNiO0tBQ0o7Q0FDSixDQUFBO0FBQ1UsUUFBQSxZQUFZLEdBQUc7SUFDdEIsU0FBUyxFQUFFO1FBQ1A7WUFDSSxNQUFNLEVBQUUsVUFBVTtZQUNsQixXQUFXLEVBQUMsQ0FBQyxNQUFNLEVBQUUsZ0JBQWdCLENBQUM7WUFDdEMsVUFBVSxFQUFFLElBQUk7U0FDbkI7UUFDRDtZQUNJLE1BQU0sRUFBRSxTQUFTO1lBQ2pCLFdBQVcsRUFBRSxDQUFDLFVBQVUsRUFBRSxNQUFNLENBQUM7WUFDakMsVUFBVSxFQUFFLEtBQUs7U0FDcEI7UUFDRDtZQUNJLE1BQU0sRUFBRSxhQUFhO1lBQ3JCLFdBQVcsRUFBRSxDQUFDLE1BQU0sRUFBRSxXQUFXLENBQUM7WUFDbEMsVUFBVSxFQUFFLElBQUk7U0FDbkI7S0FDSjtDQUNKLENBQUEifQ==
+];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaXRlbURhdGEuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi9zcmMvaXRlbURhdGEudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O0FBQVcsUUFBQSxRQUFRLEdBQUc7SUFFbEI7UUFDSTtZQUNJLE1BQU0sRUFBRSxVQUFVO1lBQ2xCLGFBQWEsRUFBRSx1QkFBdUI7WUFDdEMsS0FBSyxFQUFFLENBQUMsQ0FBQztZQUNULE1BQU0sRUFBRSxDQUFDO1lBQ1QsUUFBUSxFQUFFLEVBQUU7WUFDWixRQUFRLEVBQUUsQ0FBQztZQUNYLFNBQVMsRUFBRSxLQUFLO1NBQ25CO1FBQ0Q7WUFDSSxNQUFNLEVBQUUsTUFBTTtZQUNkLGFBQWEsRUFBRSxxQ0FBcUM7WUFDcEQsS0FBSyxFQUFFLENBQUMsQ0FBQztZQUNULE1BQU0sRUFBRSxDQUFDO1lBQ1QsUUFBUSxFQUFFLEVBQUU7WUFDWixRQUFRLEVBQUUsQ0FBQztZQUNYLFNBQVMsRUFBRSxLQUFLO1NBQ25CO1FBQ0Q7WUFDSSxNQUFNLEVBQUUsV0FBVztZQUNuQixhQUFhLEVBQUUsNEJBQTRCO1lBQzNDLEtBQUssRUFBRSxDQUFDLENBQUM7WUFDVCxNQUFNLEVBQUUsRUFBRTtZQUNWLFFBQVEsRUFBRSxFQUFFO1lBQ1osUUFBUSxFQUFFLENBQUM7WUFDWCxTQUFTLEVBQUUsS0FBSztTQUNuQjtRQUNEO1lBQ0ksTUFBTSxFQUFFLGdCQUFnQjtZQUN4QixhQUFhLEVBQUUsd0JBQXdCO1lBQ3ZDLEtBQUssRUFBRSxDQUFDLENBQUM7WUFDVCxNQUFNLEVBQUUsRUFBRTtZQUNWLFFBQVEsRUFBRSxDQUFDO1lBQ1gsUUFBUSxFQUFFLEVBQUU7WUFDWixTQUFTLEVBQUUsS0FBSztTQUNuQjtRQUNEO1lBQ0ksTUFBTSxFQUFFLFlBQVk7WUFDcEIsYUFBYSxFQUFFLHVCQUF1QjtZQUN0QyxLQUFLLEVBQUUsRUFBRTtZQUNULE1BQU0sRUFBRSxFQUFFO1lBQ1YsUUFBUSxFQUFFLEVBQUU7WUFDWixRQUFRLEVBQUUs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

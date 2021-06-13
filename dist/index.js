@@ -8,147 +8,162 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const Discord = __importStar(require("discord.js"));
-const ConfigFile = __importStar(require("./config"));
-const node_json_db_1 = __importDefault(require("node-json-db"));
-var db = new node_json_db_1.default("DataBase", true, true);
-var data = new node_json_db_1.default("Data", true, true);
+const Discord = require("discord.js");
+const ConfigFile = require("./config");
+const node_json_db_1 = require("node-json-db");
+const locationData_1 = require("./data/locationData");
+console.log("Running version " + ConfigFile.config.version);
 const client = new Discord.Client();
+const userdb = new node_json_db_1.JsonDB("userData", true, true);
+const botdb = new node_json_db_1.JsonDB("botData", true, true);
 let commands = [];
-loadCommands(`${__dirname}/commands`, ConfigFile.config.commands);
-if (ConfigFile.config.game) {
-    loadCommands(`${__dirname}/commands/game`, ConfigFile.config.gameCommands);
-}
-loadCommands(`${__dirname}/commands/general`, ConfigFile.config.generalCommands);
-var stdin = process.openStdin();
-stdin.addListener("data", function (data) {
-    let text = data.toString().trim();
-    let words = text.split(" ");
-    let send = words.slice(2).join(" ");
-    try {
-        let channel = client.guilds.get(words[0]).channels.get(words[1]);
-        channel.send(send);
-    }
-    catch (error) {
-        console.log("Error: " + error);
-    }
-});
+loadCommands(`${__dirname}/commands`);
 client.on("ready", () => {
-    console.log("Ready to go!");
-    client.user.setActivity('!commands | With RaphGamingz', { type: 'PLAYING' });
-    let allUsers = client.users.array();
-    for (let i = 0; i < allUsers.length; i++) {
-        try {
-            db.getData(`/${allUsers[i].id}`);
-        }
-        catch (error) {
-            db.push(`/${allUsers[i].id}`, { money: 50, health: 100, items: [] });
-        }
-        ;
-        try {
-            db.getData(`/${allUsers[i].id}/health`);
-        }
-        catch (error) {
-            db.push(`/${allUsers[i].id}`, { money: 50, health: 100, items: [] });
-        }
-        ;
+    var _a, _b;
+    console.log("Starting up");
+    if (ConfigFile.config.locked == false) {
+        (_a = client.user) === null || _a === void 0 ? void 0 : _a.setActivity(`${ConfigFile.config.prefix}help with Raph`, { type: "PLAYING" });
     }
-    data.push("/workData/text", null);
-});
-client.on("guildMemberAdd", member => {
-    let welcomeChannel = member.guild.channels.find(channel => channel.name === "welcome");
-    welcomeChannel.send(`Welcome ${member.displayName}! We hope you enjoy your time here!`);
-    let memberRole = member.guild.roles.find(role => role.id == "");
-    member.addRole(memberRole);
-    member.send("Thank you for joining our server");
-    try {
-        db.getData(`/${member.id}`);
+    else {
+        (_b = client.user) === null || _b === void 0 ? void 0 : _b.setActivity(`${ConfigFile.config.prefix}fix with Raph`, { type: "PLAYING" });
     }
-    catch (error) {
-        db.push(`/${member.id}`, { money: 50, health: 100, items: [] });
-    }
-    ;
-});
-client.on("guildMemberRemove", member => {
-    let welcomeChannel = member.guild.channels.find(channel => channel.name === "welcome");
-    welcomeChannel.send(`${member.displayName} has left`);
-    member.send("Why did you leave :( ?");
-});
-client.on("message", msg => {
-    if (msg.author.bot) {
-        return;
-    }
-    if (msg.channel.type === "dm") {
-        return;
-    }
-    if (ConfigFile.config.game) {
-        if (Math.floor(Math.random() * 10) == 1) {
-            let text = makeString(Math.floor(Math.random() * 3) + 1);
-            data.push("/workData/text", text);
-            msg.channel.send(`There is a job available, type ${ConfigFile.config.prefix}work ${text}`)
-                .then(msgObj => {
-                data.push("/workData/id", msgObj.id);
+    let guilds = client.guilds.cache.array();
+    for (let i = 0; i < guilds.length; i++) {
+        if (guilds[i].available) {
+            guilds[i].members.fetch().then(members => {
+                let memberAr = members.array();
+                for (let u = 0; u < memberAr.length; u++) {
+                    if (!memberAr[u].user.bot) {
+                        if (!userdb.exists("/users/" + memberAr[u].id)) {
+                            userdb.push("/users/" + memberAr[u].id, { money: 10, location: locationData_1.locationData.locations[0], maxHealth: 10, maxStorage: 30, health: 10, equipped: {}, items: {} });
+                        }
+                        if (!userdb.exists(`/users/${memberAr[u].id}/money`)) {
+                            userdb.push("/users/" + memberAr[u].id, { money: 10 }, false);
+                        }
+                        if (!userdb.exists(`/users/${memberAr[u].id}/items`)) {
+                            userdb.push("/users/" + memberAr[u].id, { items: {} }, false);
+                        }
+                        if (!userdb.exists(`/users/${memberAr[u].id}/location`)) {
+                            userdb.push("/users/" + memberAr[u].id, { location: locationData_1.locationData.locations[0] }, false);
+                        }
+                        if (!userdb.exists(`/users/${memberAr[u].id}/equpped`)) {
+                            userdb.push("/users/" + memberAr[u].id, { equipped: {} }, false);
+                        }
+                        if (!userdb.exists(`/users/${memberAr[u].id}/maxHealth`)) {
+                            userdb.push("/users/" + memberAr[u].id, { maxHealth: 10 }, false);
+                        }
+                        if (!userdb.exists(`/users/${memberAr[u].id}/maxStorage`)) {
+                            userdb.push("/users/" + memberAr[u].id, { maxStorage: 30 }, false);
+                        }
+                        if (!userdb.exists(`/users/${memberAr[u].id}/health`)) {
+                            userdb.push("/users/" + memberAr[u].id, { health: 10 }, false);
+                        }
+                    }
+                }
             });
         }
     }
-    if (!msg.content.startsWith(ConfigFile.config.prefix)) {
+    console.log("Started up");
+});
+client.on("guildMemberAdd", member => {
+    if (!userdb.exists("/users/" + member.id)) {
+        if (!member.user.bot) {
+            userdb.push("/users/" + member.id, { money: 10, location: locationData_1.locationData.locations[0], maxHealth: 10, maxStorage: 30, health: 10, equipped: {}, items: {} });
+        }
+    }
+});
+client.on("message", msg => {
+    var _a, _b, _c;
+    if (msg.author.bot && msg.content.startsWith("no ")) {
+        msg.reply("Hah, failure")
+            .then(msg => {
+            msg.delete({ timeout: 10000 });
+        });
+    }
+    if (msg.author.bot) {
         return;
     }
-    handleCommand(msg);
-});
-function handleCommand(msg) {
-    return __awaiter(this, void 0, void 0, function* () {
-        let command = msg.content.split(" ")[0].replace(ConfigFile.config.prefix, "").toLowerCase();
-        let args = msg.content.split(" ").slice(1);
-        if (msg.author.id == "445787036197060610") {
-            if (command == "sudo") {
-                msg.delete();
-                msg.channel.send(args.join(" "));
-                return;
-            }
+    if (msg.channel.type == "dm") {
+        return;
+    }
+    botdb.reload();
+    let prefix = "";
+    if (botdb.exists(`/prefixes/${(_a = msg.guild) === null || _a === void 0 ? void 0 : _a.id}`)) {
+        if (!msg.content.startsWith(botdb.getData(`/prefixes/${(_b = msg.guild) === null || _b === void 0 ? void 0 : _b.id}`))) {
+            return;
         }
+        prefix = botdb.getData(`/prefixes/${(_c = msg.guild) === null || _c === void 0 ? void 0 : _c.id}`);
+    }
+    else {
+        if (!msg.content.startsWith(ConfigFile.config.prefix)) {
+            return;
+        }
+        prefix = ConfigFile.config.prefix;
+    }
+    handleCommand(msg, prefix);
+});
+function handleCommand(msg, prefix) {
+    return __awaiter(this, void 0, void 0, function* () {
+        if (msg.author.id !== ConfigFile.config.raphid && ConfigFile.config.locked === true) {
+            return;
+        }
+        let command = msg.content.split(" ")[0].replace(prefix, "").toLowerCase();
+        let args = msg.content.split(" ").slice(1);
         for (const commandsClass of commands) {
             try {
-                if (!commandsClass.isThisCommand(command)) {
+                let isCommand = false;
+                for (const element of commandsClass.thisCommand()) {
+                    if (command == element) {
+                        isCommand = true;
+                    }
+                }
+                if (!isCommand) {
                     continue;
                 }
                 yield commandsClass.runCommand(args, msg, client, commands);
             }
-            catch (exeption) {
-                console.log(exeption);
+            catch (exception) {
+                console.log(exception);
             }
         }
     });
 }
-function loadCommands(commandsPath, commandNames) {
-    if (!commandNames || commandNames.length === 0) {
-        return;
-    }
-    for (const commandName of commandNames) {
-        const commandsClass = require(`${commandsPath}/${commandName}`).default;
+function loadCommandList(commandsPath, commandsArray) {
+    for (const commandName of commandsArray) {
+        const commandsClass = require(`${__dirname}/${commandsPath}/${commandName}`).default;
         const command = new commandsClass();
         commands.push(command);
     }
 }
-function makeString(length) {
-    let result = '';
-    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    let charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+function loadCommands(commandsPath) {
+    if (!ConfigFile.config) {
+        return;
     }
-    return result;
+    loadCommandList("settingcommands", ConfigFile.config.settingcommands);
+    loadCommandList("commands", ConfigFile.config.commands);
+}
+client.setInterval(function () {
+    tick();
+}, 5000);
+function tick() {
+    userdb.reload();
+    for (const element in userdb.getData(`/users/`)) {
+        if (userdb.exists(`/users/${element}/cooldown`)) {
+            if (ConfigFile.config.cooldown) {
+                let cooldown = userdb.getData(`/users/${element}/cooldown`) - 5;
+                if (cooldown <= 0) {
+                    userdb.delete(`/users/${element}/cooldown`);
+                }
+                else {
+                    userdb.push(`/users/${element}/cooldown`, cooldown);
+                }
+            }
+            else {
+                userdb.delete(`/users/${element}/cooldown`);
+            }
+        }
+    }
 }
 client.login(ConfigFile.config.token);
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi9zcmMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsb0RBQXNDO0FBQ3RDLHFEQUF1QztBQUN2QyxnRUFBa0M7QUFHbEMsSUFBSSxFQUFFLEdBQUcsSUFBSSxzQkFBTSxDQUFDLFVBQVUsRUFBRSxJQUFJLEVBQUUsSUFBSSxDQUFDLENBQUM7QUFDNUMsSUFBSSxJQUFJLEdBQUcsSUFBSSxzQkFBTSxDQUFDLE1BQU0sRUFBRSxJQUFJLEVBQUUsSUFBSSxDQUFDLENBQUM7QUFFMUMsTUFBTSxNQUFNLEdBQW1CLElBQUksT0FBTyxDQUFDLE1BQU0sRUFBRSxDQUFDO0FBRXBELElBQUksUUFBUSxHQUFrQixFQUFFLENBQUM7QUFHakMsWUFBWSxDQUFDLEdBQUcsU0FBUyxXQUFXLEVBQUUsVUFBVSxDQUFDLE1BQU0sQ0FBQyxRQUFRLENBQUMsQ0FBQztBQUNsRSxJQUFJLFVBQVUsQ0FBQyxNQUFNLENBQUMsSUFBSSxFQUFFO0lBQ3hCLFlBQVksQ0FBQyxHQUFHLFNBQVMsZ0JBQWdCLEVBQUUsVUFBVSxDQUFDLE1BQU0sQ0FBQyxZQUFZLENBQUMsQ0FBQztDQUM5RTtBQUNELFlBQVksQ0FBQyxHQUFHLFNBQVMsbUJBQW1CLEVBQUUsVUFBVSxDQUFDLE1BQU0sQ0FBQyxlQUFlLENBQUMsQ0FBQztBQUVqRixJQUFJLEtBQUssR0FBRyxPQUFPLENBQUMsU0FBUyxFQUFFLENBQUM7QUFFaEMsS0FBSyxDQUFDLFdBQVcsQ0FBQyxNQUFNLEVBQUUsVUFBUyxJQUFJO0lBQ25DLElBQUksSUFBSSxHQUFHLElBQUksQ0FBQyxRQUFRLEVBQUUsQ0FBQyxJQUFJLEVBQUUsQ0FBQztJQUNsQyxJQUFJLEtBQUssR0FBRyxJQUFJLENBQUMsS0FBSyxDQUFDLEdBQUcsQ0FBQyxDQUFDO0lBQzVCLElBQUksSUFBSSxHQUFHLEtBQUssQ0FBQyxLQUFLLENBQUMs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
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi9zcmMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7QUFBQSxzQ0FBc0M7QUFDdEMsdUNBQXVDO0FBR3ZDLCtDQUFzQztBQUN0QyxzREFBbUQ7QUFFbkQsT0FBTyxDQUFDLEdBQUcsQ0FBQyxrQkFBa0IsR0FBRyxVQUFVLENBQUMsTUFBTSxDQUFDLE9BQU8sQ0FBQyxDQUFDO0FBQzVELE1BQU0sTUFBTSxHQUFtQixJQUFJLE9BQU8sQ0FBQyxNQUFNLEVBQUUsQ0FBQztBQUVwRCxNQUFNLE1BQU0sR0FBRyxJQUFJLHFCQUFNLENBQUMsVUFBVSxFQUFFLElBQUksRUFBRSxJQUFJLENBQUMsQ0FBQztBQUNsRCxNQUFNLEtBQUssR0FBRyxJQUFJLHFCQUFNLENBQUMsU0FBUyxFQUFFLElBQUksRUFBRSxJQUFJLENBQUMsQ0FBQztBQUVoRCxJQUFJLFFBQVEsR0FBa0IsRUFBRSxDQUFDO0FBRWpDLFlBQVksQ0FBQyxHQUFHLFNBQVMsV0FBVyxDQUFDLENBQUM7QUFXdEMsTUFBTSxDQUFDLEVBQUUsQ0FBQyxPQUFPLEVBQUUsR0FBRyxFQUFFOztJQUNwQixPQUFPLENBQUMsR0FBRyxDQUFDLGFBQWEsQ0FBQyxDQUFDO0lBRzNCLElBQUksVUFBVSxDQUFDLE1BQU0sQ0FBQyxNQUFNLElBQUksS0FBSyxFQUFFO1FBQ25DLE1BQUEsTUFBTSxDQUFDLElBQUksMENBQUUsV0FBVyxDQUFDLEdBQUcsVUFBVSxDQUFDLE1BQU0sQ0FBQyxNQUFNLGdCQUFnQixFQUFFLEVBQUMsSUFBSSxFQUFFLFNBQVMsRUFBQyxDQUFDLENBQUM7S0FDNUY7U0FBTTtRQUNILE1BQUEsTUFBTSxDQUFDLElBQUksMENBQUUsV0FBVyxDQUFDLEdBQUcsVUFBVSxDQUFDLE1BQU0sQ0FBQyxNQUFNLGVBQWUsRUFBRSxFQUFDLElBQUksRUFBRSxTQUFTLEVBQUMsQ0FBQyxDQUFDO0tBQzNGO0lBQ0QsSUFBSSxNQUFNLEdBQUcsTUFBTSxDQUFDLE1BQU0sQ0FBQyxLQUFLLENBQUMsS0FBSyxFQUFFLENBQUM7SUFDekMsS0FBSyxJQUFJLENBQUMsR0FBRyxDQUFDLEVBQUUsQ0FBQyxHQUFHLE1BQU0sQ0FBQyxNQUFNLEVBQUUsQ0FBQyxFQUFFLEVBQUU7UUFDcEMsSUFBSSxNQUFNLENBQUMsQ0FBQyxDQUFDLENBQUMsU0FBUyxFQUFFO1lBQ3JCLE1BQU0sQ0FBQyxDQUFDLENBQUMsQ0FBQyxPQUFPLENBQUMsS0FBSyxFQUFFLENBQUMsSUFBSSxDQUFDLE9BQU8sQ0FBQyxFQUFFO2dCQUNyQyxJQUFJLFFBQVEsR0FBRyxPQUFPLENBQUMsS0FBSyxFQUFFLENBQUM7Z0JBQy9CLEtBQUssSUFBSSxDQUFDLEdBQUcsQ0FBQyxFQUFFLENBQUMsR0FBRyxRQUFRLENBQUMsTUFBTSxFQUFFLENBQUMsRUFBRSxFQUFFO29CQUN0QyxJQUFJLENBQUMsUUFBUSxDQUFDLENBQUMsQ0FBQyxDQUFDLElBQUksQ0FBQyxHQUFHLEVBQUU7d0JBQ3ZCLElBQUksQ0FBQyxNQUFNLENBQUMsTUFBTSxDQUFDLFNBQVMsR0FBRyxRQUFRLENBQUMsQ0FBQyxDQUFDLENBQUMsRUFBRSxDQUFDLEVBQUU7NEJBQzVDLE1BQU0sQ0FBQyxJQUFJLENBQUMsU0FBUyxHQUFHLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQyxFQUFFLEVBQUUsRUFBQyxLQUFLLEVBQUUsRUFBRSxFQUFFLFFBQVEsRUFBRSwyQkFBWSxDQUFDLFNBQVMsQ0FBQyxDQUFDLENBQUMsRUFBRSxTQUFTLEVBQUUsRUFBRSxFQUFFLFVBQVUsRUFBRSxFQUFFLEVBQUUsTUFBTSxFQUFFLEVBQUUsRUFBRSxRQUFRLEVBQUUsRUFBRSxFQUFFLEtBQUssRUFBRSxFQUFFLEVBQUMsQ0FBQyxDQUFDO3lCQUNqSzt3QkFDRCxJQUFJLENBQUMsTUFBTSxDQUFDLE1BQU0sQ0FBQyxVQUFVLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQyxFQUFFLFFBQVEsQ0FBQyxFQUFFOzRCQUNsRCxNQUFNLENBQUMsSUFBSSxDQUFDLFNBQVMsR0FBRyxRQUFRLENBQUMsQ0FBQyxDQUFDLENBQUMsRUFBRSxFQUFFLEVBQUMsS0FBSyxFQUFFLEVBQUUsRUFBQyxFQUFFLEtBQUssQ0FBQyxDQUFDO3lCQUMvRDt3QkFDRCxJQUFJLENBQUMsTUFBTSxDQUFDLE1BQU0sQ0FBQyxVQUFVLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQyxFQUFFLFFBQVEsQ0FBQyxFQUFFOzRCQUNsRCxNQUFNLENBQUMsSUFBSSxDQUFDLFNBQVMsR0FBRyxRQUFRLENBQUMsQ0FBQyxDQUFDLENBQUMsRUFBRSxFQUFFLEVBQUMsS0FBSyxFQUFFLEVBQUUsRUFBQyxFQUFFLEtBQUssQ0FBQyxDQUFDO3lCQUMvRDt3QkFDRCxJQUFJLENBQUMsTUFBTSxDQUFDLE1BQU0sQ0FBQyxVQUFVLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQyxFQUFFLFdBQVcsQ0FBQyxFQUFFOzRCQUNyRCxNQUFNLENBQUMsSUFBSSxDQUFDLFNBQVMsR0FBRyxRQUFRLENBQUMsQ0FBQyxDQUFDLENBQUMsRUFBRSxFQUFFLEVBQUMsUUFBUSxFQUFFLDJCQUFZLENBQUMsU0FBUyxDQUFDLENBQUMsQ0FBQyxFQUFDLEVBQUUsS0FBSyxDQUFDLENBQUM7eUJBQ3pGO3dCQUNELElBQUksQ0FBQyxNQUFNLENBQUMsTUFBTSxDQUFDLFVBQVUsUUFBUSxDQUFDLENBQUMsQ0FBQyxDQUFDLEVBQUUsVUFBVSxDQUFDLEVBQUU7NEJBQ3BELE1BQU0sQ0FBQyxJQUFJLENBQUMsU0FBUyxHQUFHLFFBQVEsQ0FBQyxDQUFDLENBQUMsQ0FBQyxFQUFFLEVBQUUsRUFBQyxRQUFRLEVBQUUsRUFBRSxFQUFDLEVBQUUsS0FBSyxDQUFDLENBQUM7eUJBQ2xFO3dCQUNELElBQUksQ0FBQyxNQUFNLENBQUMsTUFBTSxDQUFDLFVBQVUsUUFBUSxDQUFDLENBQUMsQ0FBQyxDQUFDLEVBQUUsWUFBWSxDQUFDLEVBQUU7NEJBQ3RELE1BQU0sQ0FBQyxJQUFJLENBQUMsU0FBUyxHQUFHLFFBQVEs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
