@@ -671,6 +671,42 @@
             "health": 10,
             "equipped": {},
             "items": {}
+        },
+        "291174821134336000": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "300465330311135234": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "743447953531863201": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
+        },
+        "313998970403815425": {
+            "money": 10,
+            "location": "Camp",
+            "maxHealth": 10,
+            "maxStorage": 30,
+            "health": 10,
+            "equipped": {},
+            "items": {}
         }
     }
 }
