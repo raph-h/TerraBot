@@ -1,7 +1,7 @@
 import * as Discord from "discord.js";
 import {IBotCommand} from "../api";
 import { JsonDB } from 'node-json-db';
-import { locationData } from "../data/locationData";
+import { locationData, locations } from "../data/locationData";
 import { itemData } from "../data/itemData";
 import { itemModel } from "../models/itemModel";
 
@@ -23,13 +23,7 @@ export default class test implements IBotCommand {
         db.reload();
 
         let location: string = db.getData(`/users/${msgObject.author.id}/location`);
-        let shop = null;
-
-        for (let i = 0; i < locationData.locations.length; i++) {
-            if (location.toLowerCase() == locationData.locations[i].toLowerCase()) {
-                shop = itemData[i];
-            }
-        }
+        let shop = itemData[location];
 
         if (shop == null) {
             msgObject.reply("You can't buy anything here")

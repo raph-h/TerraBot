@@ -1,6 +1,7 @@
-export let itemData = [
-    //Camp
-    [
+import { itemModel } from "../models/itemModel";
+
+export let itemData: {[location: string]: itemModel[]} = {
+    "Camp": [
         {
             "name": "Wood Log",
             "description": "Cellulose from a tree",
@@ -65,8 +66,7 @@ export let itemData = [
             "special": true
         },
     ],
-    //Weaponry
-    [
+    "Weaponry": [
         // Tools
         {
             "name": "Wooden Sword",
@@ -87,8 +87,7 @@ export let itemData = [
             "special": true,
         },
     ],
-    //Forge
-    [
+    "Forge": [
         {
             "name": "Metal Bar",
             "description": "A conductive material",
@@ -108,8 +107,7 @@ export let itemData = [
             "special": false
         },
     ],
-    //Market
-    [
+    "Market": [
         // Food
         {
             "name": "Flour",
@@ -167,8 +165,7 @@ export let itemData = [
             "special": true,
         }
     ],
-    //Ruin
-    [
+    "Ruins": [
         {
             "name": "Ancient Debris",
             "description": "A pile of old material",
@@ -188,8 +185,7 @@ export let itemData = [
             "special": true,
         },
     ],
-    //River
-    [
+    "River": [
         {
             "name": "Wooden Fishing Rod",
             "description": "Pure craftmanship for such a complex tool",
@@ -200,8 +196,7 @@ export let itemData = [
             "special": true,
         },
     ],
-    //MISC
-    [
+    "MISC": [
         // Tech
         {
             "name": "Wires",
@@ -258,4 +253,4 @@ export let itemData = [
             "special": true
         }
     ],
-];
+};

@@ -18,6 +18,16 @@ export default class use implements IBotCommand { // This command can apparently
     async runCommand(args: string[], msgObject: Discord.Message): Promise<void> {
         msgObject.delete();
         db.reload();
+        if (db.exists(`/users/${msgObject.author.id}/cooldown`)) {
+            if (db.getData(`/users/${msgObject.author.id}/cooldown`) > 0) {
+                msgObject.reply(`You have a ${db.getData(`/users/${msgObject.author.id}/cooldown`)} second cooldown`)
+                .then(msg => {
+                    (msg as Discord.Message).delete({timeout: 60000});
+                });
+                return;
+            }
+        }
+
         let path = `/users/${msgObject.author.id}`;
         if (args.length < 1) {
             msgObject.reply("You have to specify what item to use")
@@ -60,6 +70,6 @@ export default class use implements IBotCommand { // This command can apparently
         }
 
         let used = specialItem.function(msgObject, db.exists(`${path}/fight`), args, db);
-        if (used) {db.push(`/users/${msgObject.author.id}/cooldown`, 10)}
+        if (used) { db.push(`/users/${msgObject.author.id}/cooldown`, 10); }
     }
 }

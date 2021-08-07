@@ -33,13 +33,7 @@ export default class buy implements IBotCommand {
 
         let newItemName = args.join(" ");
 
-        let item = null;        
-
-        for (let i = 0; i < locationData.locations.length; i++) {
-            if (db.getData(`/users/${msgObject.author.id}/location`) == locationData.locations[i]) {
-                item = searchItem(newItemName, itemData[i])
-            }
-        }
+        let item = searchItem(newItemName, itemData[db.getData(`/users/${msgObject.author.id}/location`)])
 
         if (item === null) {
             msgObject.reply("This item doesn't exist")

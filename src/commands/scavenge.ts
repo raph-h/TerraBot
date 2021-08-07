@@ -3,7 +3,7 @@ import {IBotCommand} from "../api";
 import { JsonDB } from 'node-json-db';
 import { itemData } from "../data/itemData";
 import { itemModel } from "../models/itemModel";
-import { locationData } from "../data/locationData";
+import { locationData, locations } from "../data/locationData";
 import { addItem } from "../utils";
 
 const db = new JsonDB("userData", true, true);
@@ -34,9 +34,9 @@ export default class scavenge implements IBotCommand {
             }
         }
 
-        let lo = (db.getData(`/users/${msgObject.author.id}/location`) as string).toLowerCase();
+        let lo = (db.getData(`/users/${msgObject.author.id}/location`) as string);
         
-        if (lo != locationData.locations[0].toLowerCase() && lo != locationData.locations[4].toLowerCase()) {
+        if (lo != locations[0] && lo != locations[4]) {
             msgObject.reply("You can't search here")
             .then(msg => {
                 (msg as Discord.Message).delete({timeout: 60000});
@@ -55,14 +55,14 @@ export default class scavenge implements IBotCommand {
 
         let item = null;
         let chance = 0;
-        for (let element of itemData[0]) {
+        for (let element of itemData[lo]) {
             element = element as itemModel;
             chance += element.chance;
         }
         
         chance = Math.random() * chance;
 
-        for (let element of itemData[0]) {
+        for (let element of itemData[lo]) {
             element = element as itemModel;
             chance -= element.chance;
             if (chance <= 0 && item == null) {

@@ -4,6 +4,7 @@ import { IBotCommand } from "./api";
 
 import { JsonDB } from 'node-json-db';
 import { locationData } from "./data/locationData";
+import { tiData } from "./data/tiData";
 
 console.log("Running version " + ConfigFile.config.version);
 const client: Discord.Client = new Discord.Client();
@@ -206,9 +207,16 @@ function tick() {
 }
 
 function sendTi(msg: Discord.Message) {
-    let spaces = msg.content.split(" ").length;
-    spaces += (msg.content.length - spaces) * 2;
-    spaces = spaces % 130;
+    let spaces = 0;
+    msg.content.split("").forEach(char => {
+        if (char == " ") {
+            spaces += 1;
+        } else if (char in tiData) {
+            spaces += tiData[char];
+        } else {
+            spaces += 2;
+        }
+    });
     msg.channel.send("|| ||" + new Array(spaces - 1).join(" ") + "^ ti"); // Moves ti to correct location to be sent
 }
 

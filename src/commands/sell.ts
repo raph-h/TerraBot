@@ -1,7 +1,7 @@
 import * as Discord from "discord.js";
 import {IBotCommand} from "../api";
 import { JsonDB } from 'node-json-db';
-import { locationData } from "../data/locationData";
+import { locations } from "../data/locationData";
 import { itemData } from "../data/itemData";
 import { itemModel } from "../models/itemModel";
 import { itemsToString, removeItem } from "../utils";
@@ -32,7 +32,7 @@ export default class sell implements IBotCommand {
         }
 
         let location: string = db.getData(`/users/${msgObject.author.id}/location`) as string
-        if (!(location.toLowerCase() == locationData.locations[0].toLowerCase() || location.toLowerCase() == locationData.locations[3].toLowerCase())) {
+        if (!(location == locations[0] || location == locations[3])) {
             msgObject.reply("You can't sell here")
             .then(msg => {
                 (msg as Discord.Message).delete({timeout: 60000});
@@ -51,13 +51,15 @@ export default class sell implements IBotCommand {
 
         let sellItemName = args.join(" ");
         let item = null;
-        for (let i = 0; i < itemData.length; i++) {
-            for (let u = 0; u < itemData[i].length; u++) {
-                if (itemData[i][u].name.toLowerCase() == sellItemName.toLowerCase()) {
-                    item = itemData[i][u];
+        for (let u = 0; u < locations.length; u++) {
+            location = locations[u];
+            for (let i = 0; i < itemData[location].length; i++) {
+                if (itemData[location][i].name.toLowerCase() == sellItemName.toLowerCase()) {
+                    item = itemData[location][i];
                 }
             }
-        }
+        };
+        
         if (item == null) {
             msgObject.reply("There is no such item as this")
             .then(msg => {

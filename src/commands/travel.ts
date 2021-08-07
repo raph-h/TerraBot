@@ -31,12 +31,7 @@ export default class test implements IBotCommand {
             }
         }
         let location: string = db.getData(`/users/${msgObject.author.id}/location`);
-        let locations: string[] = [];
-        for (let i = 0; i < locationData.locations.length; i++) {
-            if (locationData.locations[i].toLowerCase() == location.toLowerCase()) {
-                locations = locationData.roads[i].locations;
-            }
-        }
+        let locations: string[] = locationData[location];
         if (args.length < 1) {
             let embed = new Discord.MessageEmbed()
                 .setColor("BLACK")

@@ -1,5 +1,5 @@
 import { JsonDB } from "node-json-db";
-import { locationData } from "./data/locationData";
+import { locations } from "./data/locationData";
 import { itemModel } from "./models/itemModel";
 
 export function convertToString(dic: any): string {
@@ -46,13 +46,13 @@ export function searchItem(item: string, data: any[]): itemModel {
     return it;
 }
 
-export function itemsToWeight(items: any, data: any[]): number {
+export function itemsToWeight(items: any, data: {[location: string]: itemModel[]}): number {
     let weight = 0;
     for (let i = 0; i < Object.keys(items).length; i++) {
         let item = null;
-        for (let u = 0; u < locationData.locations.length; u++) {
+        for (let u = 0; u < locations.length; u++) {
             if (item == null) {
-                item = searchItem(Object.keys(items)[i], data[u]);
+                item = searchItem(Object.keys(items)[i], data[locations[u]]);
             }
         }
         if (item != null) {

@@ -1,23 +1,10 @@
-export let locationData = {
-    locations: ["Camp", "Weaponry", "Forge", "Market", "Ruins", "River"],
-    roads: [
-        { // Camp
-            "locations": ["Market", "Weaponry", "River"]
-        },
-        { // Weaponry
-            "locations": ["Forge", "Market", "Camp"]
-        },
-        { // Forge
-            "locations": ["Weaponry", "Market"]
-        },
-        { // Market
-            "locations": ["Camp", "Weaponry", "Forge"]
-        }, 
-        { // Ruins
-            "locations": ["River"]
-        },
-        { // River
-            "locations": ["Camp", "Ruins"]
-        },
-    ]
+export let locations = ["Camp", "Weaponry", "Forge", "Market", "Ruins", "River"];
+
+export let locationData: {[location: string]: string[]} = {
+    "Camp": ["Market", "Weaponry", "River"],
+    "Weaponry": ["Forge", "Market", "Camp"],
+    "Forge": ["Weaponry", "Market"],
+    "Market": ["Camp", "Weaponry", "Forge"],
+    "Ruins": ["River"],
+    "River": ["Camp", "Ruins"],
 };
