@@ -12,6 +12,8 @@ const userdb = new JsonDB("userData", true, true);
 const botdb = new JsonDB("botData", true, true);
 
 let commands: IBotCommand[] = [];
+let tiMode = ConfigFile.config["ti-mode"];
+let shouldTi = true;
 
 loadCommands(`${__dirname}/commands`);
 // RECIPES - CRAFTING
@@ -28,11 +30,14 @@ client.on("ready", () => {
     console.log("Starting up");
 
     // Set bot activity
-    if (ConfigFile.config.locked == false) {
+    if (tiMode) {
+        client.user?.setActivity("TI-ing", {type: "PLAYING"});
+    } else if (ConfigFile.config.locked == false) {
         client.user?.setActivity(`${ConfigFile.config.prefix}help with Raph`, {type: "PLAYING"});
     } else {
         client.user?.setActivity(`${ConfigFile.config.prefix}fix with Raph`, {type: "PLAYING"});
     }
+    
     let guilds = client.guilds.cache.array();
     for (let i = 0; i < guilds.length; i++) {
         if (guilds[i].available) {
@@ -92,6 +97,17 @@ client.on("message", msg => {
     // Ignore messages sent by the bot
     if (msg.author.bot) { return; }
 
+    if (tiMode) {
+        if (!msg.content.toLowerCase().trim().endsWith("ti") && shouldTi == true) {
+            shouldTi = false;
+            msg.channel.send("^ ti")
+            const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+            sleep(30000).then(() => {
+                shouldTi = true;
+            });
+        }
+    }
+
     // Ignore messages sent in dms
     if (msg.channel.type == "dm") { return; }
 
@@ -107,7 +123,9 @@ client.on("message", msg => {
     }
 
     // Handle command
-    handleCommand(msg, prefix);
+    if (!tiMode) {
+        handleCommand(msg, prefix);
+    }
 });
 
 async function handleCommand(msg: Discord.Message, prefix: string) {
