@@ -4,7 +4,7 @@ import {IBotCommand} from "../api";
 import { specialItems } from "../data/specialItemData";
 const db = new JsonDB("userData", true, true);
 
-export default class use implements IBotCommand {
+export default class use implements IBotCommand { // This command can apparently be spammed
     private readonly _command = ["use"];
 
     help(): string {
@@ -60,6 +60,6 @@ export default class use implements IBotCommand {
         }
 
         let used = specialItem.function(msgObject, db.exists(`${path}/fight`), args, db);
-        if (used) {db.push(`/users/${msgObject.author.id}/cooldown`, 5)}
+        if (used) {db.push(`/users/${msgObject.author.id}/cooldown`, 10)}
     }
 }

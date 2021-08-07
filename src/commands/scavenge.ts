@@ -36,7 +36,7 @@ export default class scavenge implements IBotCommand {
 
         let lo = (db.getData(`/users/${msgObject.author.id}/location`) as string).toLowerCase();
         
-        if (lo != locationData.locations[0].toLowerCase() || lo != locationData.locations[4].toLowerCase()) {
+        if (lo != locationData.locations[0].toLowerCase() && lo != locationData.locations[4].toLowerCase()) {
             msgObject.reply("You can't search here")
             .then(msg => {
                 (msg as Discord.Message).delete({timeout: 60000});

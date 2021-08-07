@@ -96,15 +96,18 @@ client.on("message", msg => {
     }
     // Ignore messages sent by the bot
     if (msg.author.bot) { return; }
-
     if (tiMode) {
-        if (!msg.content.toLowerCase().trim().endsWith("ti") && shouldTi == true) {
-            shouldTi = false;
-            msg.channel.send("^ ti")
-            const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-            sleep(30000).then(() => {
-                shouldTi = true;
+        if (msg.mentions.has(client.user) && msg.author.id == ConfigFile.config.raphid) {
+            msg.delete();
+            msg.channel.messages.fetch({limit: 2}).then(res => {
+                sendTi(res.last());
             });
+        } else if (!msg.content.toLowerCase().trim().endsWith("ti") && shouldTi) {
+            shouldTi = false;
+            sendTi(msg);
+            const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+            sleep(30000).then(() => { shouldTi = true; });
+            return;
         }
     }
 
@@ -123,9 +126,7 @@ client.on("message", msg => {
     }
 
     // Handle command
-    if (!tiMode) {
-        handleCommand(msg, prefix);
-    }
+    handleCommand(msg, prefix);
 });
 
 async function handleCommand(msg: Discord.Message, prefix: string) {
@@ -202,6 +203,13 @@ function tick() {
             }
         }
     }
+}
+
+function sendTi(msg: Discord.Message) {
+    let spaces = msg.content.split(" ").length;
+    spaces += (msg.content.length - spaces) * 2;
+    spaces = spaces % 130;
+    msg.channel.send("|| ||" + new Array(spaces - 1).join(" ") + "^ ti"); // Moves ti to correct location to be sent
 }
 
 client.login(ConfigFile.config.token);
