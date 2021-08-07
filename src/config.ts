@@ -1,6 +1,7 @@
 export let config = {
     "token" : "",
-    "version" : "1.1.0",
+    "ti-mode": true,
+    "version" : "1.1.1",
     "prefix" : "?",
     "locked" : false,
     "cooldown": true,
