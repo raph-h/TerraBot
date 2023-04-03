@@ -1,0 +1,19 @@
+{
+  "name": "terrabot",
+  "version": "2.0.0",
+  "description": "A typescript discord bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RaphGamingz/TerraBot.git"
+  },
+  "author": "Raph",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RaphGamingz/TerraBot/issues"
+  },
+  "homepage": "https://github.com/RaphGamingz/TerraBot#readme"
+}
